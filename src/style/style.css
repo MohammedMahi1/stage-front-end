@@ -1,0 +1,300 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: 0.2s;
+}
+
+.errPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    line-height: 70px;
+}
+
+.errPage .errIcon {
+    font-size: 200px;
+    color: #ef3232;
+}
+
+.errPage h1 {
+    font-size: 60px;
+}
+
+.errPage .errInfo {
+    font-size: 30px;
+}
+
+
+.container {
+    background: linear-gradient(175deg, #272727, #373737);
+    width: 100%;
+    height: 100vh;
+}
+
+.table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table td {
+    border-bottom: 1px solid #9f9f9f;
+    padding: 8px;
+}
+
+.table tr {
+    background-color: #c6c6c6;
+}
+
+.table th:first-child {
+    text-align: center;
+}
+
+.table tr:hover {
+    background-color: #b2b2b2;
+}
+
+.table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    font-weight: 500;
+    background-color: #e6e6e6;
+    border-bottom: #272727 2px solid;
+}
+.header th{ 
+    border-bottom: none;
+}
+.navbar {
+    background-color: transparent;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.hamburger {
+    padding: 0;
+    width: 13.5px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger * {
+    width: 100%;
+    height: 0;
+    border: 1px solid #fff;
+}
+
+.logo-royal-maroc {
+    width: 30px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search {
+    width: 500px;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+    background-color: #ffffff31;
+    outline: none;
+    border: none;
+    color: #fff;
+}
+
+.search::placeholder {
+    font-weight: 700;
+}
+
+.logo-search {
+    background-color: #ffffff31;
+    padding: 11px;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+}
+
+.logo-setting {
+    font-size: 20px;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-profile {
+    font-size: 25px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 200px 82% 20px);
+    height: calc(100vh - 70px);
+    gap: 5px;
+}
+
+.left-bar {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.left-bar .childrens {
+    padding: 10px 0 10px 19.4px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 7px;
+    border-radius: 0 30px 30px 0;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
+.childrens:focus {
+    background-color: #cbc9c96f;
+}
+.btn-add {
+    outline: none;
+    border: none;
+    background-color: #cbc9c9;
+    color: #373737;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 13px;
+    margin: 20px 0 0 19.4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-add .logo-add {
+    font-size: 15.5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.dropdown-btn {
+    outline: none;
+    border: none;
+    background-color: #cbc9c9;
+    color: #373737;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 13px;
+    margin: 20px 0 0 19.4px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.form-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    place-items: center;
+    gap:40px;
+}
+.form-container h1{
+    color: #fff;
+    grid-column: 1/3;
+    text-align: center;
+}
+
+.form-controle{
+grid-column: 1/2;
+width: 400px;
+display: flex;
+flex-direction: column;
+margin-right: 100px;
+}
+.form .form-controle span{
+    color: #fff;
+    font-size: 30x;
+    font-weight:500 ;
+    padding-bottom: 10px;
+}
+.form .form-controle input{
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+.form .form-controle input:focus, .btn:focus{
+    box-shadow: 0 0 0 3px #ffffff5c;
+}
+
+.form-container .childe-2, .childe-4, .childe-6{
+    grid-column: 2/3;
+}
+.btn{
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 20px;
+    background-color: #cbc9c9;
+    color: #272727;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.selector{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+.selector *{
+    font-size: 20px;
+    border-radius: 5px;
+}
+.form-container span{
+    color: #fff;
+}

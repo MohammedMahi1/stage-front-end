@@ -20,7 +20,6 @@ import AddAdmin from './components/superadmin/add/admin/AddAdmin';
 import AddEmploye from './components/superadmin/add/employe/AddEmploye';
 
 
-
 const router = createBrowserRouter(
   [
     {
@@ -29,30 +28,26 @@ const router = createBrowserRouter(
       errorElement: <ErrPage />,
       children: [
         { element: <Register />, path: '/register' },
-        {
-          element: <SupLayout />, path: '/superadmin',
+          {element: <SupLayout />, path: '/superadmin',
           children: [
-            {
-              element: <SupAdminIndex />, path: '/superadmin',
-              children: [
-                { index: true, element: <EmployesComp />, path: '/superadmin/employes' },
-                { element: <AdministrativeComp />, path: '/superadmin/administrative/' },
-                { element: <FinencierComp />, path: '/superadmin/financier/' },
-                { element: <TechniqueComp />, path: '/superadmin/technique/' },
-                { element: <FinencierComp />, path: '/superadmin/finencier' },
-                { element: <TechniqueComp />, path: '/superadmin/technique' },
-                { element: <ArriverComp />, path: '/superadmin/arriver' },
-                { element: <DepartComp />, path: '/superadmin/depart' },
-                {element:<AddAdmin/>, path: '/superadmin/addadmin' },
-                {element:<AddEmploye/>, path: '/superadmin/addemploye' },
-              ]
-            },
-            { element: <SupAdminLogin />, path: "/superadmin/login", index: true },
+            
+             { element: <SupAdminIndex />, path: '/superadmin' },
+            { index: true, element: <EmployesComp />, path: '/superadmin/employes' },
+            { element: <AdministrativeComp />, path: '/superadmin/administrative/' },
+            { element: <FinencierComp />, path: '/superadmin/financier/' },
+            { element: <TechniqueComp />, path: '/superadmin/technique/' },
+            { element: <FinencierComp />, path: '/superadmin/finencier' },
+            { element: <TechniqueComp />, path: '/superadmin/technique' },
+            { element: <ArriverComp />, path: '/superadmin/arriver' },
+            { element: <DepartComp />, path: '/superadmin/depart' },
+            { element: <AddAdmin />, path: '/superadmin/addadmin' },
+            { element: <AddEmploye />, path: '/superadmin/addemploye' },
           ]
-        }
-
+        },
+        { element: <SupAdminLogin />, path: "/superadmin/login", index: true },
       ]
     }
+
   ]
 )
 const root = ReactDOM.createRoot(document.getElementById('root'));

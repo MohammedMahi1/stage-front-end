@@ -29,24 +29,34 @@ const TechniqueComp = () => {
         <div>
             <table className='table'>
                 <tr className='header'>
-                    <th colSpan={7}>Admins Techniques</th>
+                    <th colSpan={12}>Admins Techniques</th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th>ID</th>
-                    <th>Full name</th>
-                    <th>Email</th>
-                    <th>CIN</th>
+                <th> </th>
+                    <th> </th>
+                    <th className='bordred-head'>ID</th>
+                    <th> </th>
+                    <th className='bordred-head'>Full name</th>
+                    <th> </th>
+                    <th className='bordred-head'>Email</th>
+                    <th> </th>
+                    <th className='bordred-head'>CIN</th>
+                    <th> </th>
                 </tr>
                 {
                     AdminTechniques.map((e) => {
                         return (
                             <tr>
-                                <td><input type="checkbox" name={e.id} /></td>
+                                <td></td>
+                                <td><input type="checkbox" name={e.id} id="" /></td>
                                 <td>{e.id}</td>
+                                <td></td>
                                 <td>{e.fullname}</td>
+                                <td></td>
                                 <td>{e.email}</td>
+                                <td></td>
                                 <td>{e.CIN}</td>
+                                <td></td>
                             </tr>
                         )
                     })

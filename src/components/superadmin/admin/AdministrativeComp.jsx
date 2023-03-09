@@ -48,7 +48,7 @@ const AdministrativeComp = () => {
                         return (
                             <tr>
                                 <td></td>
-                                <td><input type="checkbox" name={e.id} id="" /></td>
+                                <td><input type="checkbox" className='table-checkbox' name={e.id} id=""/></td>
                                 <td>{e.id}</td>
                                 <td></td>
                                 <td>{e.fullname}</td>
@@ -56,6 +56,10 @@ const AdministrativeComp = () => {
                                 <td>{e.email}</td>
                                 <td></td>
                                 <td>{e.CIN}</td>
+                                <td></td>
+                                <td><input type="button" value="Edit"/></td>
+                                <td></td>
+                                <td><input type="button" value="delete"/></td>
                                 <td></td>
                             </tr>
                         )

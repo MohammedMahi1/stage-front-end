@@ -41,7 +41,7 @@ const SupLayout = () => {
                     <h5>Bureau d'order</h5>
                     <div className='search-bar'>
                         <AiOutlineSearch className='logo-search' />
-                        <input type="text" className='search' placeholder='Rechrcher des fichier' />
+                        <input type="text" className='search' placeholder='Rechrcher des fichier avec le : numero, interet, employer' />
                     </div>
                 </div>
                 <div className='right-side'>

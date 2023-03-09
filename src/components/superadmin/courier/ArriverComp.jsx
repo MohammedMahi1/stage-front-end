@@ -35,43 +35,48 @@ const ArriverComp = () => {
                     <th></th>
                     <th className='bordred-head'>Numero</th>
                     <th></th>
-                    <th className='bordred-head'>Date de fichier</th>
-                    <th></th>
                     <th className='bordred-head'>Objectif</th>
                     <th></th>
                     <th className='bordred-head'>Expediteur</th>
                     <th></th>
                     <th className='bordred-head'>Destinataire</th>
                     <th></th>
+                    <th className='bordred-head'>Employe</th>
+                    <th></th>
                     <th className='bordred-head'>Interet</th>
                     <th></th>
-                    <th className='bordred-head'>Employe</th>
+                    <th className='bordred-head'>Date de fichier</th>
                     <th></th>
                 </tr>
                 {
                     Arriver.map((e) => {
                         return (
-                            <tr>
+                            <tr className='show'>
                             <td></td>
                                 <td>{e.numero}</td>
                                 <td></td>
-                                <td>{e.date_de_fichier}</td>
-                                <td></td>
-                                <td>{e.objectif}</td>
+                                <td className='ellipsis'><p>{e.objectif}</p></td>
                              <td></td>   
                                 <td>{e.expediteur}</td>
                                 <td></td>
                                 <td>{e.destinataire}</td>
                                 <td></td>
+                                <td>{e.employere}</td>
+                                <td></td>
                                 <td>{e.interet}</td>
                                 <td></td>
-                                <td>{e.employere}</td>
-                            
+                                <td>{e.date_de_fichier}</td>
+                            <td className='visible'> <span>hh</span></td>
                             </tr>
                         )
                     })
                 }
             </table>
+            
+            <h1 className='hide'>
+                show
+            </h1>
+
         </div>
     )
 }

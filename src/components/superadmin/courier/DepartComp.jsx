@@ -35,8 +35,6 @@ const DepartComp = () => {
                     <th></th>
                     <th className='bordred-head'>Numero</th>
                     <th></th>
-                    <th className='bordred-head'>Date de fichier</th>
-                    <th></th>
                     <th className='bordred-head'>Objectif</th>
                     <th></th>
                     <th className='bordred-head'>Expediteur</th>
@@ -48,6 +46,8 @@ const DepartComp = () => {
                     <th className='bordred-head'>Employe</th>
                     <th></th>
                     <th className='bordred-head'>Type de courier</th>
+                    <th></th>
+                    <th className='bordred-head'>Date de fichier</th>
                     <th></th>
                     <th className='bordred-head'>Date de commission</th>
                     <th></th>
@@ -61,8 +61,6 @@ const DepartComp = () => {
                                 <td></td>
                                 <td>{e.numero}</td>
                                 <td></td>
-                                <td>{e.date_de_fichier}</td>
-                                <td></td>
                                 <td>{e.objectif}</td>
                                 <td></td>
                                 <td>{e.expediteur}</td>
@@ -74,6 +72,8 @@ const DepartComp = () => {
                                 <td>{e.employere}</td>
                                 <td></td>
                                 <td>{e.type_de_courier}</td>
+                                <td></td>
+                                <td>{e.date_de_fichier}</td>
                                 <td></td>
                                 <td>{e.date_de_commission}</td>
                                 <td></td>

@@ -45,23 +45,52 @@
     margin: 20px;
     border-radius: 10px;
     overflow: hidden;
+    font-size: 13px;
 }
 
 .table td {
     border-bottom: 1px solid #9f9f9f;
-    padding: 8px;
+    padding:10px 10px 10px 0;
+}
+.ellipsis {
+    width: 20%;
+    position: relative;
 }
 
+.ellipsis:before {
+    content: ' ';
+    visibility: hidden;
+}
+
+.ellipsis p {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 8px;
+    bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
 .table tr {
-    background-color: #c6c6c6;
+    background-color: #b9b9b9;
+    font-weight: 500;
+    transition: 0.5s;
 }
 
 .table th:first-child {
     text-align: center;
 }
 
-.table tr:hover {
-    background-color: #b2b2b2;
+.table tr:nth-child(1n + 3 ):hover {
+    cursor: pointer;
+    background-color: #d4d4d4;
+}
+.show:hover + .visible{
+   color: #fafafa;
 }
 
 .table th {
@@ -70,13 +99,15 @@
     text-align: center;
     font-weight: 500;
 }
-.header th{ 
+
+.header th {
     border-bottom: none;
 }
-.bordred-head{
-    border-bottom: #1178ff 2px solid;
 
+.bordred-head {
+    border-bottom: #1465df 2px solid;
 }
+
 .navbar {
     background-color: transparent;
     color: #fff;
@@ -154,9 +185,8 @@
 
 .left-bar .childrens {
     padding: 10px 0 10px 19.4px;
-    font-size: 12px;
-    font-weight: 700;
-    margin-top: 10px;
+    font-size:13px;
+    font-weight: 500;
     border-radius: 0 30px 30px 0;
     outline: none;
     border: none;
@@ -165,9 +195,11 @@
     text-decoration: none;
     color: #fff;
 }
+
 .childrens:focus {
     background-color: #cbc9c96f;
 }
+
 .btn-add {
     outline: none;
     border: none;
@@ -182,6 +214,7 @@
     cursor: pointer;
     text-align: center;
 }
+
 .logo-icon {
     font-size: 15.5px;
     margin-right: 5px;
@@ -220,41 +253,46 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.form-container{
+
+.form-container {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     place-items: center;
-    gap:20px;
+    gap: 20px;
 }
-.form-container h1{
+
+.form-container h1 {
     color: #fff;
     grid-column: 1/3;
     grid-row: 2/3;
     text-align: center;
 }
 
-.form-controle{
-grid-column: 1/2;
-width: 400px;
-display: flex;
-flex-direction: column;
-margin-right: 100px;
+.form-controle {
+    grid-column: 1/2;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
 }
-.form .form-controle .info-text{
+
+.form .form-controle .info-text {
     color: #ffffff79;
     font-size: 12px;
-    font-weight:500 ;
+    font-weight: 500;
     margin-bottom: 10px;
     margin-top: 10px;
 }
-.form-container .message-controle{
+
+.form-container .message-controle {
     grid-row: 1/2;
     grid-column: 1/4;
     width: 90%;
 
 
-} 
-.message-controle .message{
+}
+
+.message-controle .message {
     background-color: #2bff44ba;
     color: #fafafa;
     font-size: 20px;
@@ -262,30 +300,36 @@ margin-right: 100px;
     padding: 20px;
     width: 100%;
 }
-.form .form-controle input{
+
+.form .form-controle input {
     padding: 10px;
     font-size: 14px;
     border-radius: 5px;
     outline: none;
     border: none;
 }
-.form .form-controle input:focus, .btn:focus{
+
+.form .form-controle input:focus,
+.btn:focus {
     box-shadow: 0 0 0 3px #2986fff1;
 }
 
-.form-container .childe-2{
+.form-container .childe-2 {
     grid-column: 2/3;
     grid-row: 3/4;
 }
- .childe-6{
+
+.childe-6 {
     grid-column: 2/3;
     grid-row: 4/5;
- }
- .childe-7{
+}
+
+.childe-7 {
     grid-column: 2/3;
-    
- }
-.btn{
+
+}
+
+.btn {
     padding: 10px;
     font-size: 14px;
     font-weight: 500;
@@ -297,32 +341,112 @@ margin-right: 100px;
     border-radius: 5px;
     cursor: pointer;
 }
-.selector{
+
+.selector {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     outline: none;
     border: none;
 }
-.selector *{
+
+.selector * {
     font-size: 20px;
     border-radius: 5px;
 }
-.form-container span{
+
+.form-container span {
     color: #fff;
 }
-.profile-container{
+
+.profile-container {
     display: grid;
     align-items: center;
-grid-template-columns: repeat(2,1fr);
-grid-template-rows: repeat(3,1fr);
-background-color: #fafafa;
-border-radius: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-color: #fafafa;
+    border-radius: 5px;
 }
-.profile-container span{
+
+.dark-btn {
+    background-color: #272727;
+    color: #fff;
+}
+
+.dark-btn:focus {
+    box-shadow: 0 0 0 3px #00000060;
+}
+
+.profile-container span {
     font-size: 20px;
 }
-.profile-container .children-1{
+
+.profile-container .children-1 {
     grid-row: 1/2;
     grid-column: 1/2;
 }
+
+.container-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(-195deg, #fafafa, #d9d9d9);
+}
+
+.container-login .container-form {
+    width: 800px;
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.container-login .container-form .form {
+    background-color: #fff;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    text-align: center;
+    border-radius: 10px 0 0 10px;
+}
+
+.input {
+    padding: 14px;
+    outline: none;
+    border: none;
+    background-color: #919191;
+    margin-top: 40px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+
+.input:focus {
+    box-shadow: 0 0 0 3px #00000027;
+}
+
+.input::placeholder {
+    color: #ffffff8d;
+}
+
+.contexte-login {
+    background-color: #272727;
+    border-radius: 0 10px 10px 0;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+    text-align: center;
+}
+
+.overflowing-text {
+    text-overflow: ellipsis;
+}
+
+.logo-royal-maroc-login {
+    width: 55px;
+}
+

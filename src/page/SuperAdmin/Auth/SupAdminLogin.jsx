@@ -63,18 +63,23 @@ const SupAdminLogin = () => {
         login();
     }, [])
     return (
-        <div>
-
+        <div className='container-login'>
+<div className='container-form'>
             <form onSubmit={loginSubmit} className='form'>
-                <h1>Login page</h1>
-                <input type='text' name='username' onChange={(e) => setUsername(e.target.value)} value={username} placeholder='Entre your username' />
+                <h1>Login</h1>
+                <input className='input' type='text' name='username' onChange={(e) => setUsername(e.target.value)} value={username} placeholder='Entrer le username' />
 
-                <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} value={password} placeholder='Entre your password' />
+                <input className='input' type='password' name='password' onChange={(e) => setPassword(e.target.value)} value={password} placeholder='Entre le mot de pass' />
                 <div className='controle'>
-                    <button type="submit" className='btn btn-primary'>Login</button>
-                    <a href='/register' className='link'>I don't have account</a>
+                    <button type="submit" className='btn dark-btn'>Se connecter</button>
                 </div>
             </form>
+            <div className='contexte-login'>
+            <img className='logo-royal-maroc-login' src='../royal-maroc.png' />
+                <span>Municipalite Taourirt</span>
+                <span>Login page d'admin de bureau d'order</span>
+            </div>
+</div>
         </div>
     )
 }

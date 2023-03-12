@@ -1,9 +1,8 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 const Layout = () => {
-
   return (
-    <div>
+  <div>
     <Outlet/>
     </div>
 

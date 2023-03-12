@@ -1,22 +1,23 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const AddEmploye = () => {
+const EmployeEdit = () => {
+    const { id } = useParams();
   const [fullname, setFullName] = useState("");
   const [CIN, setCIN] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [type,setType] = useState("Administrative");
-  const [interet, setInteret] = useState("humain");
+  const [interet, setInteret] = useState("");
   const navigate = useNavigate();
   const [message,setMessage] = useState("");
   const [boolean, setBoolean] = useState(false)
   const addEmploye = async (e) => {
-      
+
       e.preventDefault();
       const formData = new FormData();
-      
+
       formData.append('fullname', fullname);
       formData.append('CIN', CIN);
       formData.append('email', email);
@@ -28,10 +29,10 @@ const AddEmploye = () => {
       console.log(accesToken);
       if (accesToken === undefined || accesToken === null || accesToken === 0 || accesToken === false) {
           navigate('/superadmin/login')
-        }
-        await axios({
+      }
+      await axios({
         method: "post",
-        url: "http://localhost:8000/api/superadmin/addEmploye",
+        url: "http://localhost:8000/api/superadmin/editEmploye/" + id,
         data: formData,
         headers: {
             "Accept": "application/json",
@@ -43,13 +44,14 @@ const AddEmploye = () => {
     })
     navigate("/superadmin/employes")
     
-}
-return (
+  }
+
+  return (
       <div className=''>
           <form onSubmit={addEmploye}>
               <br />
               <div className="form form-container">
-                  <h1>Ajouter un employe</h1>
+                  <h1>Modifier l'employe numer : {id}</h1>
                   <div className='message-controle'>
                   {
                       boolean ?
@@ -105,4 +107,4 @@ return (
   )
 }
 
-export default AddEmploye
+export default EmployeEdit

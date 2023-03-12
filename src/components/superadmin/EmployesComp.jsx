@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { FaEdit } from 'react-icons/fa';
+import { NavLink, useNavigate } from 'react-router-dom';
+import EmployeDelete from './delete/EmployeDelete';
 
 const EmployesComp = () => {
   const [Employe, setEmploye] = useState([]);
@@ -32,27 +34,31 @@ const EmployesComp = () => {
           <th colSpan={20}>Table des Employes</th>
         </tr>
         <tr>
-          <th></th>
-          <th></th>
+          <th className='space-header'></th>
+          <th className='space-header'></th>
           <th className='bordred-head'>ID</th>
-          <th></th>
+          <th className='space-header'></th>
           <th className='bordred-head'>Full name</th>
-          <th></th>
+          <th className='space-header'></th>
           <th className='bordred-head'>Email</th>
-          <th></th>
+          <th className='space-header'></th>
           <th className='bordred-head'>CIN</th>
-          <th></th>
+          <th className='space-header'></th>
           <th className='bordred-head'>Interet</th>
-          <th></th>
+          <th className='space-header'></th>
           <th className='bordred-head'>Type de classe</th>
-          <th></th>
+          <th className='space-header'></th>
+          <th className='space-header'></th>
+          <th className='space-header'></th>
+          <th className='space-header'></th>
+          <th className='space-header'></th>
         </tr>
         {
           Employe.map((e) => {
             return (
               <tr>
                 <td></td>
-                <td><input type="checkbox" name={e.id} id="" /></td>
+                <td></td>
                 <td>{e.id}</td>
                 <td></td>
                 <td>{e.fullname}</td>
@@ -64,6 +70,10 @@ const EmployesComp = () => {
                 <td>{e.interet}</td>
                 <td></td>
                 <td>{e.type}</td>
+                <td></td>
+                <td ><NavLink to={`/superadmin/employe/${e.id}`}><FaEdit className='edit-icon' /></NavLink></td>
+                <td></td>
+                <td ><EmployeDelete id={e.id} /></td>
                 <td></td>
               </tr>
             )

@@ -39,6 +39,8 @@ const AddAdmin = () => {
                 setMessage(data.message)
                 setBoolean(true)
             })
+        navigate("/superadmin/administrative")
+            
         }else if(type === "Financiere"){
             await axios({
                 method: "post",
@@ -52,6 +54,8 @@ const AddAdmin = () => {
                 setMessage(data.message)
                 setBoolean(true)
             })
+        navigate("/superadmin/finencier")
+            
         }else if(type === "Technique"){
             await axios({
                 method: "post",
@@ -65,6 +69,8 @@ const AddAdmin = () => {
                 setMessage(data.message);
                 setBoolean(true)
             })
+        navigate("/superadmin/technique")
+            
         }else{
             console.log('error condition');
         }
@@ -77,12 +83,6 @@ const AddAdmin = () => {
                 <div className="form form-container">
                     <h1>Ajouter un admin</h1>
                     <div className='message-controle'>
-                    {
-                        boolean ?
-                        <div className='message'>{message}</div>
-                        
-                        : ""
-                    }
                     </div>
                     <div className='form-controle childe-1'>
                         <input type='text' name='fullname' value={fullname} onChange={(e) => { setFullName(e.target.value) }} placeholder='Entrer le nom complete' />

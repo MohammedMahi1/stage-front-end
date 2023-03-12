@@ -86,11 +86,7 @@
 }
 
 .table tr:nth-child(1n + 3 ):hover {
-    cursor: pointer;
     background-color: #d4d4d4;
-}
-.show:hover + .visible{
-   color: #fafafa;
 }
 
 .table th {
@@ -257,7 +253,7 @@
 .form-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    place-items: center;
+    place-items: left;
     gap: 20px;
 }
 
@@ -288,8 +284,6 @@
     grid-row: 1/2;
     grid-column: 1/4;
     width: 90%;
-
-
 }
 
 .message-controle .message {
@@ -301,7 +295,7 @@
     width: 100%;
 }
 
-.form .form-controle input {
+.form .form-controle input{
     padding: 10px;
     font-size: 14px;
     border-radius: 5px;
@@ -309,8 +303,17 @@
     border: none;
 }
 
+.form-controle-flex input{
+    width:50vw;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
 .form .form-controle input:focus,
-.btn:focus {
+.btn:focus , 
+.form-controle-flex input:focus{
     box-shadow: 0 0 0 3px #2986fff1;
 }
 
@@ -328,7 +331,13 @@
     grid-column: 2/3;
 
 }
-
+.full-childe{
+    grid-column: 1/4;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 .btn {
     padding: 10px;
     font-size: 14px;
@@ -349,8 +358,15 @@
     outline: none;
     border: none;
 }
+.selector-flex{
+    width: 51vw;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
 
-.selector * {
+.selector *.selector-flex * {
     font-size: 20px;
     border-radius: 5px;
 }
@@ -429,7 +445,6 @@
 .input::placeholder {
     color: #ffffff8d;
 }
-
 .contexte-login {
     background-color: #272727;
     border-radius: 0 10px 10px 0;
@@ -441,12 +456,41 @@
     color: #ffff;
     text-align: center;
 }
-
 .overflowing-text {
     text-overflow: ellipsis;
 }
-
 .logo-royal-maroc-login {
     width: 55px;
 }
+.edit-icon{
+    text-decoration: none ;
+    color: #272727;
+    font-size: 16px;
+    cursor: pointer;
+}
+.space-header{
+    width: 30px;
+}
 
+.object-controle{
+    grid-column: 1/4;
+    width:50vw;
+    height: 50vh;
+    display: flex;
+    
+}
+.object-controle .object{
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    outline: none;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+.object-controle .object:focus{
+    box-shadow: 0 0 0 3px #2986fff1;
+}

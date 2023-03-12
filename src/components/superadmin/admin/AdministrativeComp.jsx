@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
-
+import { NavLink, useNavigate } from 'react-router-dom';
+import AdministrativeDelete from '../delete/AdministrativeDelete';
+import { FaEdit } from 'react-icons/fa';
 const AdministrativeComp = () => {
     const [AdminAdministratives, setAdminAdministratives] = useState([]);
     const navigate = useNavigate();
@@ -29,18 +30,22 @@ const AdministrativeComp = () => {
         <div>
             <table className='table'>
                 <tr className='header'>
-                    <th colSpan={12}>Admins Administratives</th>
+                    <th colSpan={20}>Admins Administratives</th>
                 </tr>
                 <tr>
-                    <th></th>
-                    <th></th>
+                    <th className='space-header'></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>ID</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Full name</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Email</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>CIN</th>
+                    <th></th>
+                    <th className='space-header'></th>
+                    <th></th>
+                    <th className='space-header'></th>
                     <th></th>
                 </tr>
                 {
@@ -48,7 +53,7 @@ const AdministrativeComp = () => {
                         return (
                             <tr>
                                 <td></td>
-                                <td><input type="checkbox" className='table-checkbox' name={e.id} id=""/></td>
+                                <td></td>
                                 <td>{e.id}</td>
                                 <td></td>
                                 <td>{e.fullname}</td>
@@ -57,9 +62,9 @@ const AdministrativeComp = () => {
                                 <td></td>
                                 <td>{e.CIN}</td>
                                 <td></td>
-                                <td><input type="button" value="Edit"/></td>
+                                <td ><NavLink to={`/superadmin/administrative/${e.id}`}><FaEdit className='edit-icon' /></NavLink></td>
                                 <td></td>
-                                <td><input type="button" value="delete"/></td>
+                                <td ><AdministrativeDelete id={e.id} /></td>
                                 <td></td>
                             </tr>
                         )

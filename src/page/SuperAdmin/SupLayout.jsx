@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaUserCircle } from 'react-icons/fa';
@@ -8,17 +8,15 @@ import  { RiAdminFill } from 'react-icons/ri'
 import  { BsFileEarmarkArrowUpFill , BsFileEarmarkArrowDownFill, BsFillPersonFill} from 'react-icons/bs'
 const SupLayout = () => {
 
-    const [AdminFinancieres, setAdminFinancieres] = useState([]);
-    const [AdminTechniques, setAdminTechniques] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         const affiche = async () => {
             const accesToken = localStorage.getItem("accessToken");
-            if (accesToken === undefined || accesToken === null || accesToken === 0 || accesToken === false) {
+            if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
                 navigate('/superadmin/login')
             }
-            const res = await axios({
+            await axios({
                 method: "get",
                 url: "http://localhost:8000/api/superadmin/",
                 headers: {
@@ -26,12 +24,26 @@ const SupLayout = () => {
                     "Authorization": 'Bearer ' + accesToken
                 }
             })
-            setAdminFinancieres(res.data.AdminFinancieres)
-            setAdminTechniques(res.data.AdminTechniques)
         }
         affiche();
     }, []);
-
+    const logout = () => {
+        const accesToken = localStorage.getItem("accessToken");
+        if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
+            navigate('/superadmin/login')
+        }
+        axios({
+            method:'delete',
+            url: 'http://localhost:8000/api/superadmin/logout',
+            headers:{
+                "Accept": "application/json",
+                "Authorization": 'Bearer ' + accesToken
+            }
+        })
+        
+        localStorage.removeItem("accessToken");
+        navigate('/superadmin/login')
+    }
     return (
         <div className='container'>
             <nav className='navbar'>
@@ -46,7 +58,7 @@ const SupLayout = () => {
                 </div>
                 <div className='right-side'>
                     <NavLink to='/superadmin'><FaUserCircle className='logo-profile' /></NavLink>
-
+                    <button onClick={()=>logout()}>Logout</button>
                 </div>
             </nav>
 

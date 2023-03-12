@@ -2,19 +2,19 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const ArriverComp = () => {
+const ArriverComp_emp = () => {
     const [Arriver, setArriver] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         const affiche = async () => {
-            const accesToken = localStorage.getItem("accessToken");
+            const accesToken = localStorage.getItem("accessToken_emp");
             if (accesToken === undefined || accesToken === null || accesToken === 0 || accesToken === false) {
-                navigate('/superadmin/login')
+                navigate('/employe/login')
             }
             const res = await axios({
                 method: "get",
-                url: "http://localhost:8000/api/superadmin/",
+                url: "http://localhost:8000/api/employe/",
                 headers: {
                     "Accept": "application/json",
                     "Authorization": 'Bearer ' + accesToken
@@ -75,4 +75,4 @@ const ArriverComp = () => {
     )
 }
 
-export default ArriverComp
+export default ArriverComp_emp

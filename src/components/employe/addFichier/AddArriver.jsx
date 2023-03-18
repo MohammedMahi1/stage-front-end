@@ -27,6 +27,7 @@ useEffect(() => {
             }
         })
         setEmployere(res.data.datas.fullname)
+        setInteret(res.data.datas.interet)
         console.log(res.data.datas.fullname);
         setDateFichier(date)
     }
@@ -63,30 +64,21 @@ useEffect(() => {
       
   }
     return (
-        <div>
+        <div className=''>
             <form onSubmit={addArriver}>
                 <div className='form form-container'>
                     <div className="full-childe">
-                    <div className='form-controle-flex'>
+                    <div className='form-controle'>
                         <input type="text" name="expediteur" value={expediteur} onChange={(e)=>setExpediteur(e.target.value)} placeholder="Entrer l'expediteur" />
                     </div>
-                    <div className='form-controle-flex'>
+                    <div className='form-controle'>
                         <input type="text" name="destinataire" value={destinataire} onChange={(e)=>setDestinataire(e.target.value)} placeholder="Entrer le destinataire" />
                     </div>
-                    <div className="form-controle-flex ">
-                      <select className='selector-flex' name='interet' value={interet} onChange={(e)=>setInteret(e.target.value)}>
-                          <option value="humain">humain</option>
-                          <option value="materiel">materiel</option>
-                          <option value="economice">economice</option>
-                      </select>
-                  </div>
                   <div className="object-controle">
                         <textarea name="objectif" className='object' value={objectif} onChange={(e)=>setObjectif(e.target.value)} placeholder="Entrer l'objet de fichier"></textarea>
                     </div>
-                    <div className="form-controle-flex">
-                      <div className='btn-controle'>
-                          <button className='btn btn-primary'>Ajouter cette fichier</button>
-                      </div>
+                    <div className="form-controle">
+                          <button className='btn'>Ajouter cette fichier</button>
                   </div>
                 </div>
                     </div>

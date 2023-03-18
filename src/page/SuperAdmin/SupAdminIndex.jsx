@@ -2,7 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router-dom';
 const SupAdminIndex = () => {
-    const [Donne, setDonne] = useState([]);
+    const [fullname, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [CIN, setCIN] = useState("");
+    const [username,setUsername] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,26 +22,51 @@ const SupAdminIndex = () => {
                     "Authorization": 'Bearer ' + accesToken
                 }
             })
-            setDonne(res.data.datas)
+            setFullName(res.data.datas.fullname)
+            setEmail(res.data.datas.email)
+            setCIN(res.data.datas.CIN)
+            setUsername(res.data.datas.username)
         }
         affiche();
     }, []);
     return (
         <div className='profile-container'>
-     
-           {
-               Donne.map((e)=>{
-                return(
-                    <>
-                        <span>Votre nome complet : {e.fullname}</span>
-                        <span>Votre CIN : {e.CIN}</span>
-                        <span>Votre Address email : {e.email}</span>
-                        <span>Votre Username : {e.username}</span>
-                    </>
-                )
-               })
-        }
+        <div className='profile-controle'>
+                <div className='profile-column'>
+                    <div className='profile-data'>
+                        <p className='profile-info'>Votre fullname</p>
+                        <p >{fullname}</p>
+                    </div>
+                </div>
+                <div className='profile-column'>
+                    <div className='profile-data'>
+                        <p className='profile-info'>Votre username</p>
+                        <p >{username}</p>
+                    </div>
+                </div>
+            </div>
+            <div className='profile-controle'>
+                <div className='profile-header'>
+                <div className="profile-data">
+                    <p>Profile info</p>
+                </div>
+                </div>
 
+                <div className='profile-column'>
+                    <div className='profile-data'>
+                        <p className='profile-info'>Votre email</p>
+                        <p >{email}</p>
+                    </div>
+                </div>
+
+                <div className='profile-column'>
+                    <div className='profile-data'>
+                        <p className='profile-info'>Votre CIN</p>
+                        <p >{CIN}</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
     )
 }

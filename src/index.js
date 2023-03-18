@@ -71,7 +71,7 @@ const router = createBrowserRouter(
             { element: <ArriverComp_emp />, path: '/employe/arriver' },
             { element: <DepartComp_emp />, path: '/employe/depart' },
             { element: <AddArriver/>, path: '/employe/addArriver' },
-            { element: <AddDepart />, path: '/employe/addArriver' },
+            { element: <AddDepart />, path: '/employe/addDepart' },
           ]
         },
         { element: <SupAdminLogin />, path: "/superadmin/login", index: true },

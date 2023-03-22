@@ -1,22 +1,21 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai';
-import { BsFileEarmarkArrowDownFill, BsFileEarmarkArrowUpFill, BsFillPersonFill } from 'react-icons/bs';
-import { FaUserCircle } from 'react-icons/fa';
+import { BsFileEarmarkArrowDownFill, BsFileEarmarkArrowUpFill } from 'react-icons/bs';
 import { RiFolderAddFill } from 'react-icons/ri';
 
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+import Show from '../../components/Itemes/Show';
 
 const EmployeLayout = () => {
     const navigate = useNavigate();
-    const [open, setOpen] = useState(false);
     useEffect(() => {
         const affiche = async () => {
             const accesToken = localStorage.getItem("accessToken_emp");
             if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
                 navigate('/employe/login')
             }
-            await axios({
+            const res = await axios({
                 method: "get",
                 url: "http://localhost:8000/api/employe/",
                 headers: {
@@ -27,23 +26,7 @@ const EmployeLayout = () => {
         }
         affiche();
     }, []);
-    const logout = () => {
-        const accesToken = localStorage.getItem("accessToken_emp");
-        if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
-            navigate('/employe/login')
-        }
-        axios({
-            method: 'delete',
-            url: 'http://localhost:8000/api/employe/logout',
-            headers: {
-                "Accept": "application/json",
-                "Authorization": 'Bearer ' + accesToken
-            }
-        })
 
-        localStorage.removeItem("accessToken_emp");
-        navigate('/employe/login')
-    }
     return (
 
         <div className='container'>
@@ -53,22 +36,12 @@ const EmployeLayout = () => {
                     <img className='logo-royal-maroc' src='../royal-maroc.png' />
                     <h5>Bureau d'order</h5>
                     <div className='search-bar'>
-                        <AiOutlineSearch className='logo-search' />
+                    <i className="pi pi-search logo-search"></i>
                         <input type="text" className='search' placeholder='Rechrcher des fichier avec le : numero, interet, employer' />
                     </div>
                 </div>
                 <div className='right-side'>
-                    {/* 
-            -------------------------------------------------------
-                    */}
-                    <FaUserCircle className='logo-profile' onClick={()=>setOpen(!open)}/>
-                    {
-                        open &&(
-                        <div className='dropdown'>
-                        <NavLink to='/employe'>Profile</NavLink>
-                        <button onClick={() => logout()}>logout</button>
-                    </div>)
-                    }
+                    <Show person={"employe"}/>
                 </div>
             </nav>
 

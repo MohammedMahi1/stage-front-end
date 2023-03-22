@@ -34,7 +34,11 @@ useEffect(() => {
     affiche();
 }, []);
     const addArriver = async (e) => {
-        
+        const accesToken = localStorage.getItem("accessToken_emp");
+        console.log(accesToken);
+        if (accesToken === undefined || accesToken === null || accesToken === 0 || accesToken === false) {
+            navigate('/employe/login')
+          }
         e.preventDefault();
         const formData = new FormData();
         
@@ -44,11 +48,7 @@ useEffect(() => {
         formData.append('interet', interet);
         formData.append('date_de_fichier',dateFichier)
         formData.append('employere',employere);
-        const accesToken = localStorage.getItem("accessToken_emp");
-        console.log(accesToken);
-        if (accesToken === undefined || accesToken === null || accesToken === 0 || accesToken === false) {
-            navigate('/employe/login')
-          }
+        
           await axios({
           method: "post",
           url: "http://localhost:8000/api/employe/addArriver",

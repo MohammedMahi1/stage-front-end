@@ -5,19 +5,18 @@ import Upload from '../../components/Itemes/Upload';
 const SupAdminIndex = () => {
     const [fullname, setFullName] = useState("");
     const [email, setEmail] = useState("");
-    const [CIN, setCIN] = useState("");
     const [username,setUsername] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
-        const accesToken = localStorage.getItem("accessToken");
-        if (accesToken === undefined || accesToken === null || accesToken === 0) {
-            navigate('/superadmin/login')
+        const accesToken = localStorage.getItem("accessToken_pre");
+        if (accesToken === "undefined" || accesToken === null || accesToken === 0) {
+            navigate('/president/login')
         }
         const affiche = async () => {
             const res = await axios({
                 method: "get",
-                url: "http://localhost:8000/api/superadmin/",
+                url: "http://localhost:8000/api/president/",
                 headers: {
                     "Accept": "application/json",
                     "Authorization": 'Bearer ' + accesToken
@@ -25,7 +24,6 @@ const SupAdminIndex = () => {
             })
             setFullName(res.data.datas.fullname)
             setEmail(res.data.datas.email)
-            setCIN(res.data.datas.CIN)
             setUsername(res.data.datas.username)
         }
         
@@ -38,7 +36,7 @@ const SupAdminIndex = () => {
                 <div className="profile-header">
                     <div className="profile-img-controle">
                     <div className='img-container'>
-                        <Upload person={"superadmin"}/>
+                        <Upload person={"president"}/>
                     </div>
                         <p className='profile-info-img'>Personnalisez votre compte avec une photo.</p>
                     </div>
@@ -69,12 +67,6 @@ const SupAdminIndex = () => {
                     </div>
                 </div>
 
-                <div className='profile-column'>
-                    <div className='profile-data'>
-                        <p className='profile-info'>Votre CIN</p>
-                        <p >{CIN}</p>
-                    </div>
-                </div>
 
             </div>
         </div>

@@ -2,26 +2,24 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const DepartComp = () => {
-    const [Depart, setDepart] = useState([]);
-    const navigate = useNavigate();
-
+const ArrPresident = () => {
+    const [Arriver, setArriver] = useState([]);
+    const navigate = useNavigate()
     useEffect(() => {
         const affiche = async () => {
-            const accesToken = localStorage.getItem("accessToken");
-            console.log(accesToken);
-            if (accesToken === undefined || accesToken === null || accesToken === 0 || accesToken === false) {
-                navigate('/superadmin/login')
+            const accesToken = localStorage.getItem("accessToken_pre");
+            if (accesToken === "undefined" || accesToken === null || accesToken === 0 || accesToken === false) {
+                navigate('/president/login')
             }
             const res = await axios({
                 method: "get",
-                url: "http://localhost:8000/api/superadmin/",
-                headers: {
+                url: "http://localhost:8000/api/president/",
+                headers:{
                     "Accept": "application/json",
                     "Authorization": 'Bearer ' + accesToken
-                }
+                    }
             })
-            setDepart(res.data.Depart)
+            setArriver(res.data.Arriver)
         }
         affiche();
     }, []);
@@ -29,7 +27,7 @@ const DepartComp = () => {
         <div>
             <table className='table'>
                 <tr>
-                    <th colSpan={30}>Les fichiers de depart</th>
+                    <th colSpan={20}>Les fichiers d'arriver</th>
                 </tr>
                 <tr>
                     <th></th>
@@ -39,25 +37,19 @@ const DepartComp = () => {
                     <th></th>
                     <th className='bordred-head'>Expediteur</th>
                     <th></th>
-                    <th className='bordred-head'>Type de class</th>
-                    <th></th>
-                    <th className='bordred-head'>Interet</th>
+                    <th className='bordred-head'>Destinataire</th>
                     <th></th>
                     <th className='bordred-head'>Employe</th>
                     <th></th>
-                    <th className='bordred-head'>Type de courier</th>
+                    <th className='bordred-head'>Interet</th>
                     <th></th>
                     <th className='bordred-head'>Date de fichier</th>
                     <th></th>
-                    <th className='bordred-head'>Date de commission</th>
-                    <th></th>
-                    <th className='bordred-head'>Date specifiee</th>
-                    <th></th>
                 </tr>
                 {
-                    Depart.map((e) => {
+                    Arriver.map((e) => {
                         return (
-                            <tr>
+                            <tr className='show'>
                                 <td></td>
                                 <td>{e.numero}</td>
                                 <td></td>
@@ -65,19 +57,13 @@ const DepartComp = () => {
                                 <td></td>
                                 <td>{e.expediteur}</td>
                                 <td></td>
-                                <td>{e.type_de_class}</td>
-                                <td></td>
-                                <td>{e.interet}</td>
+                                <td>{e.destinataire}</td>
                                 <td></td>
                                 <td>{e.employere}</td>
                                 <td></td>
-                                <td>{e.type_de_courier}</td>
+                                <td>{e.interet}</td>
                                 <td></td>
                                 <td>{e.date_de_fichier}</td>
-                                <td></td>
-                                <td>{e.date_de_commission}</td>
-                                <td></td>
-                                <td>{e.date_specifiee}</td>
                                 <td></td>
                             </tr>
                         )
@@ -88,4 +74,4 @@ const DepartComp = () => {
     )
 }
 
-export default DepartComp
+export default ArrPresident

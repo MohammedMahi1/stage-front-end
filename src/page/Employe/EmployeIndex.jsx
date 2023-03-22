@@ -1,15 +1,14 @@
-import { Avatar } from '@mui/material';
+
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Upload from '../../components/Itemes/Upload';
 const EmployeIndex = () => {
     const [fullname, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [CIN, setCIN] = useState("");
     const [interet, setInteret] = useState("");
     const [type, setType] = useState("");
-    const [image, setImage] = useState(null);
-    const [imageUrl, setImageUrl] = useState('');
     const navigate = useNavigate();
     
     
@@ -36,42 +35,10 @@ const EmployeIndex = () => {
             setCIN(res.data.datas.CIN)
             setInteret(res.data.datas.interet)
             setType(res.data.datas.type)
-            setImageUrl(res.data.datas.image_url)
         }
         affiche();
     }, []);
-    const addProfileImage = async(e) => {
-        
-        e.preventDefault();
-        
-        const formData = new FormData();
-        
-        formData.append('image_profile', image);
-        
-        const accesToken = localStorage.getItem("accessToken_emp");
-        
-        await axios({
-            method: "post",
-            url: "http://localhost:8000/api/employe/addImageProfile",
-            data: formData,
-            headers: {
-                "Accept": "application/json",
-                "Authorization": 'Bearer ' + accesToken
-            }
-        }).then(({ data }) => {
-            console.log(data.message);
-        })
-    }
-const handlechange = (e) => {
-    setImage(e.target.files[0])
-}
-const onClose = () => {
-    setImage(null)
-}
-const onCrop = view => {
-    setImage(view)
-}
-    console.log(imageUrl);
+
     //last time i was here
     return (
         <div className='profile-container'>
@@ -79,13 +46,12 @@ const onCrop = view => {
                 <div className="profile-header">
                     <div className="profile-img-controle">
                     <div className='img-container'>
-                    <Avatar className='img' onCrop={onCrop} onClose={onClose} src={imageUrl}/>
+                        <Upload person={'employe'}/>
                     </div>
-                        <p className='profile-info-img'>Personnalisez votre compte avec une photo.</p>
-                        <form onSubmit={addProfileImage}>
-                        <input type="file" onChange={handlechange} name="profile-img" className='profile-add-img' />
-                        <button className='btn-add-image'>Add image</button>
-                        </form>
+                        <p className='profile-info-img'>Personnalisez votre compte avec une photo.
+                            <p className='profile-info-text'>Clicker sur le photo profile pour ajouter la photo</p>
+                        </p>
+                        
                     </div>
                 </div>
                 <div className='profile-column'>

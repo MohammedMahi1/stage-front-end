@@ -6,7 +6,6 @@ import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import Layout from './page/Layout';
 import ErrPage from './page/error/ErrPage';
 import './style/style.css';
-import Register from './page/auth/Register';
 import SupAdminLogin from './page/SuperAdmin/Auth/SupAdminLogin';
 import SupAdminIndex from './page/SuperAdmin/SupAdminIndex';
 import SupLayout from './page/SuperAdmin/SupLayout';
@@ -29,6 +28,29 @@ import EmployeLogin from './page/Employe/Auth/EmployeLogin';
 import EmployeIndex from './page/Employe/EmployeIndex';
 import AddArriver from './components/employe/addFichier/AddArriver';
 import AddDepart from './components/employe/addFichier/AddDepart';
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import PresidentLayout from './page/President/PresidentLayout';
+import PresidentIndex from './page/President/PresidentIndex';
+import AdminiPresident from './components/president/Admins/AdminiPresident';
+import FienPresident from './components/president/Admins/FinenPresident';
+import TechPresident from './components/president/Admins/TechPresident';
+import EmpPresident from './components/president/employe/EmpPresident';
+import SupPresident from './components/president/SuperAdmin/SupPresident';
+import DirPresident from './components/president/Director/DirPresident';
+import ArrPresident from './components/president/couriers/ArrPresident';
+import DepPresident from './components/president/couriers/DepPresident';
+import DirectorLayout from './page/Diretor/DirectorLayout';
+import AdminiDirector from './components/director/Admins/AdminiDirector';
+import FinenDirector from './components/director/Admins/FinenDirector';
+import TechDirector from './components/director/Admins/TechDirector';
+import SupDirector from './components/director/SuperAdmin/SupDirector';
+import AddSupDirector from './components/director/SuperAdmin/AddSupDirector';
+import EmpDirector from './components/director/employe/EmpPresident';
+import PresidentLogin from './page/President/Auth/PresidentLogin';
+import DirectorLogin from './page/Diretor/Auth/DirectorLogin';
+
 
 const router = createBrowserRouter(
   [
@@ -37,10 +59,40 @@ const router = createBrowserRouter(
       element: <Layout />,
       errorElement: <ErrPage />,
       children: [
-        { element: <Register />, path: '/register' },
+        // --------------------- President Routes --------------------------//
+
+        {
+          element: <PresidentLayout />, path: '/president',
+          children:[
+            {element:<PresidentIndex/>, path: '/president/'},
+            {element:<DepPresident/>, path: '/president/depart'},
+            {element:<ArrPresident/>, path: '/president/arriver'},
+            {element:<DirPresident/>, path: '/president/directeur'},
+            {element:<SupPresident/>, path: '/president/superadmin'},
+            {element:<AdminiPresident/>, path: '/president/administrative'},
+            {element:<FienPresident/>, path: '/president/finencier'},
+            {element:<TechPresident/>, path: '/president/technique'},
+            {element:<EmpPresident/>, path: '/president/employe'},
+          ]
+
+        },
+        
+        // --------------------- Director Routes --------------------------//
+        
+        {
+          element:<DirectorLayout/>, path: '/director',
+          children:[
+          {element:<SupDirector/>, path: '/director/superadmin'},
+          {element:<AddSupDirector/>, path: '/director/addSuperadmin'},
+          {element:<AdminiDirector/>, path: '/director/administrative'},
+          {element:<FinenDirector/>,path: '/director/finencier'},
+          {element:<TechDirector/>, path: '/director/technique'},
+          {element:<EmpDirector/>, path: '/director/employe'},
+          ]
+        },
         
         // --------------------- Super Admin Routes --------------------------//
-        
+
         {
           element: <SupLayout />, path: '/superadmin',
           children: [
@@ -61,19 +113,24 @@ const router = createBrowserRouter(
             { element: <EmployeEdit />, path: '/superadmin/employe/:id' },
           ]
         },
-        
+
         // --------------------- Employe Routes --------------------------//
-        
+
         {
           element: <EmployeLayout />, path: '/employe',
           children: [
             { element: <EmployeIndex />, path: '/employe' },
             { element: <ArriverComp_emp />, path: '/employe/arriver' },
             { element: <DepartComp_emp />, path: '/employe/depart' },
-            { element: <AddArriver/>, path: '/employe/addArriver' },
+            { element: <AddArriver />, path: '/employe/addArriver' },
             { element: <AddDepart />, path: '/employe/addDepart' },
           ]
         },
+        
+        // --------------------- login Routes --------------------------//
+        
+        { element: <PresidentLogin />, path: "/president/login", index: true },
+        { element: <DirectorLogin />, path: "/director/login", index: true },
         { element: <SupAdminLogin />, path: "/superadmin/login", index: true },
         { element: <EmployeLogin />, path: "/employe/login", index: true },
       ]

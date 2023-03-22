@@ -32,27 +32,27 @@ const DepartComp_emp = () => {
                     <th colSpan={30}>Les fichiers de depart</th>
                 </tr>
                 <tr>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Numero</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Objectif</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Expediteur</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Type de class</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Interet</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Employe</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Type de courier</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Date de fichier</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Date de commission</th>
-                    <th></th>
+                    <th className='space-header'></th>
                     <th className='bordred-head'>Date specifiee</th>
-                    <th></th>
+                    <th className='space-header'></th>
                 </tr>
                 {
                     Depart.map((e) => {
@@ -61,7 +61,7 @@ const DepartComp_emp = () => {
                                 <td></td>
                                 <td>{e.numero}</td>
                                 <td></td>
-                                <td>{e.objectif}</td>
+                                <td className='ellipsis'><p>{e.objectif}</p></td>
                                 <td></td>
                                 <td>{e.expediteur}</td>
                                 <td></td>

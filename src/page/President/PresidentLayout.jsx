@@ -7,7 +7,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import Show from '../../components/Itemes/Show'
 
 const PresidentLayout = () => {
-const navigate = useNavigate();
+    const navigate = useNavigate();
     const accesToken = localStorage.getItem("accessToken_pre");
     if (accesToken === "undefined" || accesToken === null || accesToken === 0) {
         navigate('/president/login')
@@ -39,7 +39,7 @@ const navigate = useNavigate();
                     <NavLink to='/president/administrative' className='childrens'><RiAdminFill className='logo-icon' />Adminnistrative</NavLink>
                     <NavLink to='/president/finencier' className='childrens'><RiAdminFill className='logo-icon' />Financiere</NavLink>
                     <NavLink to='/president/technique' className='childrens'><RiAdminFill className='logo-icon' />Technique</NavLink>
-                    <NavLink to='/president/employe' className='childrens'><BsFillPersonFill className='logo-icon' />Employes</NavLink> 
+                    <NavLink to='/president/employe' className='childrens'><BsFillPersonFill className='logo-icon' />Employes</NavLink>
                 </nav>
                 <Outlet />
             </div>

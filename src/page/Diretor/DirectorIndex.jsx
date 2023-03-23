@@ -2,21 +2,21 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import {  useNavigate } from 'react-router-dom';
 import Upload from '../../components/Itemes/Upload';
-const PresidentIndex = () => {
+const DirectorIndex = () => {
     const [fullname, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [username,setUsername] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
-        const accesToken = localStorage.getItem("accessToken_pre");
+        const accesToken = localStorage.getItem("accessToken_dir");
         if (accesToken === "undefined" || accesToken === null || accesToken === 0) {
-            navigate('/president/login')
+            navigate('/director/login')
         }
         const affiche = async () => {
             const res = await axios({
                 method: "get",
-                url: "http://localhost:8000/api/president/",
+                url: "http://localhost:8000/api/director/",
                 headers: {
                     "Accept": "application/json",
                     "Authorization": 'Bearer ' + accesToken
@@ -36,7 +36,7 @@ const PresidentIndex = () => {
                 <div className="profile-header">
                     <div className="profile-img-controle">
                     <div className='img-container'>
-                        <Upload person={"president"}/>
+                        <Upload person={"director"}/>
                     </div>
                         <p className='profile-info-img'>Personnalisez votre compte avec une photo.</p>
                     </div>
@@ -73,4 +73,4 @@ const PresidentIndex = () => {
     )
 }
 
-export default PresidentIndex
+export default DirectorIndex

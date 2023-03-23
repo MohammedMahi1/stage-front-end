@@ -19,18 +19,19 @@ const DirectorLogin = () => {
                 username: data.username,
                 password: data.password,
             },
-            url: "http://localhost:8000/api/president/login",
+            url: "http://localhost:8000/api/director/login",
             headers: {
                 "Accept": "application/json",
+                
             }
         })
         const res = await auth.data
-        localStorage.setItem("accessToken_pre", res.token)
+        localStorage.setItem("accessToken_dir", res.token)
         navigate('/director/');
     }
     useEffect(() => {
         const login = async () => {
-            const accesToken = localStorage.getItem("accessToken_pre");
+            const accesToken = localStorage.getItem("accessToken_dir");
             if (accesToken === "undefined" || accesToken === null || accesToken === 0 || accesToken === false) {
                 navigate('/director/login')
             } else if (accesToken !== 'undefined') {

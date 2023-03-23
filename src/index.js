@@ -50,6 +50,9 @@ import AddSupDirector from './components/director/SuperAdmin/AddSupDirector';
 import EmpDirector from './components/director/employe/EmpPresident';
 import PresidentLogin from './page/President/Auth/PresidentLogin';
 import DirectorLogin from './page/Diretor/Auth/DirectorLogin';
+import DirectorIndex from './page/Diretor/DirectorIndex';
+import AdminLayout from './page/Admin/AdminLayout';
+import Administrative from './components/admin/Administrative';
 
 
 const router = createBrowserRouter(
@@ -63,34 +66,35 @@ const router = createBrowserRouter(
 
         {
           element: <PresidentLayout />, path: '/president',
-          children:[
-            {element:<PresidentIndex/>, path: '/president/'},
-            {element:<DepPresident/>, path: '/president/depart'},
-            {element:<ArrPresident/>, path: '/president/arriver'},
-            {element:<DirPresident/>, path: '/president/directeur'},
-            {element:<SupPresident/>, path: '/president/superadmin'},
-            {element:<AdminiPresident/>, path: '/president/administrative'},
-            {element:<FienPresident/>, path: '/president/finencier'},
-            {element:<TechPresident/>, path: '/president/technique'},
-            {element:<EmpPresident/>, path: '/president/employe'},
+          children: [
+            { element: <PresidentIndex />, path: '/president/' },
+            { element: <DepPresident />, path: '/president/depart' },
+            { element: <ArrPresident />, path: '/president/arriver' },
+            { element: <DirPresident />, path: '/president/directeur' },
+            { element: <SupPresident />, path: '/president/superadmin' },
+            { element: <AdminiPresident />, path: '/president/administrative' },
+            { element: <FienPresident />, path: '/president/finencier' },
+            { element: <TechPresident />, path: '/president/technique' },
+            { element: <EmpPresident />, path: '/president/employe' },
           ]
 
         },
-        
+
         // --------------------- Director Routes --------------------------//
-        
+
         {
-          element:<DirectorLayout/>, path: '/director',
-          children:[
-          {element:<SupDirector/>, path: '/director/superadmin'},
-          {element:<AddSupDirector/>, path: '/director/addSuperadmin'},
-          {element:<AdminiDirector/>, path: '/director/administrative'},
-          {element:<FinenDirector/>,path: '/director/finencier'},
-          {element:<TechDirector/>, path: '/director/technique'},
-          {element:<EmpDirector/>, path: '/director/employe'},
+          element: <DirectorLayout />, path: '/director',
+          children: [
+            { element: <DirectorIndex />, path: '/director/' },
+            { element: <SupDirector />, path: '/director/superadmin' },
+            { element: <AddSupDirector />, path: '/director/addSuperadmin' },
+            { element: <AdminiDirector />, path: '/director/administrative' },
+            { element: <FinenDirector />, path: '/director/finencier' },
+            { element: <TechDirector />, path: '/director/technique' },
+            { element: <EmpDirector />, path: '/director/employe' },
           ]
         },
-        
+
         // --------------------- Super Admin Routes --------------------------//
 
         {
@@ -113,7 +117,13 @@ const router = createBrowserRouter(
             { element: <EmployeEdit />, path: '/superadmin/employe/:id' },
           ]
         },
-
+        // --------------------- Admins Routes --------------------------//
+        {
+          element: <AdminLayout/>, path: '/admin',
+          children: [
+            {element: <Administrative/>, path: '/admin/administrative'}
+          ]
+        },
         // --------------------- Employe Routes --------------------------//
 
         {
@@ -126,9 +136,10 @@ const router = createBrowserRouter(
             { element: <AddDepart />, path: '/employe/addDepart' },
           ]
         },
-        
+
+
         // --------------------- login Routes --------------------------//
-        
+
         { element: <PresidentLogin />, path: "/president/login", index: true },
         { element: <DirectorLogin />, path: "/director/login", index: true },
         { element: <SupAdminLogin />, path: "/superadmin/login", index: true },

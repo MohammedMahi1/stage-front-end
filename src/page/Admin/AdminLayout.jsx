@@ -1,4 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { BsFileEarmarkArrowDownFill, BsFileEarmarkArrowUpFill, BsFillPersonFill } from 'react-icons/bs';
+import { HiUserAdd } from 'react-icons/hi';
+import { RiAdminFill } from 'react-icons/ri';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import Show from '../../components/Itemes/Show';
 
 const AdminLayout = () => {
   return (
@@ -15,7 +20,7 @@ const AdminLayout = () => {
             </div>
         </div>
         <div className='right-side'>
-            <Show person={"superadmin"} />
+            <Show person={"administrative"} />
 
         </div>
     </nav>

@@ -11,6 +11,10 @@ const AddSupDirector = () => {
     const navigate = useNavigate();
 
     const addSup = async (e) => {
+        const accesToken = localStorage.getItem("accessToken_dir");
+        if (accesToken === undefined || accesToken === null || accesToken === 0) {
+            navigate('/director/login')
+        }
         e.preventDefault();
         const formData = new FormData();
         formData.append('fullname', fullName);
@@ -25,6 +29,7 @@ const AddSupDirector = () => {
             data: formData,
             headers: {
             "Accept": "application/json",
+            "Authorization": 'Bearer ' + accesToken
         },  
         }).then(({ data }) => {
             console.log(data.message);

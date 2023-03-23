@@ -10,15 +10,19 @@ const Show = ({ person }) => {
     const toast = useRef(null);
 
     const navigate = useNavigate()
-    const navigation = () =>{
-        if(person === 'employe'){
+    const navigation = () => {
+        if (person === 'employe') {
             navigate('/employe')
-        }else if (person === 'siperadmin'){
+        } else if (person === 'siperadmin') {
             navigate('/superadmin')
         }
-        else if (person === 'president'){
+        else if (person === 'president') {
             navigate('/president')
-        }else{
+        }
+        else if (person === 'director') {
+            navigate('/director')
+        }
+        else {
             navigate('/')
         }
     }
@@ -56,9 +60,9 @@ const Show = ({ person }) => {
 
             localStorage.removeItem("accessToken");
             navigate('/superadmin/login')
-            
-        }else if (person === "president"){
-        
+
+        } else if (person === "president") {
+
             const accesToken = localStorage.getItem("accessToken_pre");
             if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
                 navigate('/president/login')
@@ -74,6 +78,23 @@ const Show = ({ person }) => {
 
             localStorage.removeItem("accessToken_pre");
             navigate('/president/login')
+        } else if (person === "director") {
+
+            const accesToken = localStorage.getItem("accessToken_dir");
+            if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
+                navigate('/director/login')
+            }
+            axios({
+                method: 'delete',
+                url: 'http://localhost:8000/api/director/logout',
+                headers: {
+                    "Accept": "application/json",
+                    "Authorization": 'Bearer ' + accesToken
+                }
+            })
+
+            localStorage.removeItem("accessToken_dir");
+            navigate('/director/login')
         }
         else {
             console.log("error");
@@ -88,7 +109,7 @@ const Show = ({ person }) => {
                     label: 'Profile',
                     icon: 'pi pi-user',
                     command: () => {
-                    navigation()
+                        navigation()
                     }
                 },
                 {

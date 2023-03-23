@@ -91,6 +91,26 @@ const Upload = ({ person }) => {
       }
       affiche();
     }
+    else if (person === 'director') {
+
+      const accesToken = localStorage.getItem("accessToken_dir");
+      if (accesToken === "undefined" || accesToken === null || accesToken === 0) {
+        navigate('/director/login')
+      }
+      const affiche = async () => {
+        const res = await axios({
+          method: "get",
+          url: "http://localhost:8000/api/director/",
+          headers: {
+            "Accept": "application/json",
+            "Authorization": 'Bearer ' + accesToken
+          }
+        })
+        setImageUrl(res.data.datas.image_url)
+        console.log(res.data.datas);
+      }
+      affiche();
+    }
   }, []);
 
   const addProfileImage = async (e) => {
@@ -155,7 +175,7 @@ const Upload = ({ person }) => {
 
       await axios({
         method: "post",
-        url: "http://localhost:8000/api/employe/addImageProfile",
+        url: "http://localhost:8000/api/president/addImageProfile",
         data: formData,
         headers: {
           "Accept": "application/json",
@@ -166,6 +186,31 @@ const Upload = ({ person }) => {
         window.location.reload(false);
       })
     }
+    
+    else if (person === 'director') {
+      e.preventDefault();
+
+      const formData = new FormData();
+
+      formData.append('image_profile', image);
+
+      const accesToken = localStorage.getItem("accessToken_dir");
+
+      await axios({
+        method: "post",
+        url: "http://localhost:8000/api/director/addImageProfile",
+        data: formData,
+        headers: {
+          "Accept": "application/json",
+          "Authorization": 'Bearer ' + accesToken
+        }
+      }).then(({ data }) => {
+        console.log(data.message);
+        window.location.reload(false);
+      })
+    }
+    
+    
     else {
       console.log('error');
     }

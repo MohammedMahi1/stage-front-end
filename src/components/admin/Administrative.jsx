@@ -1,26 +1,20 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 
-const EmpDirector = () => {
+const Administrative = () => {
   const [Employe, setEmploye] = useState([]);
-  const navigate = useNavigate()
 
   useEffect(() => {
     const affiche = async () => {
-      const accesToken = localStorage.getItem("accessToken_dir");
-      if (accesToken === undefined || accesToken === null || accesToken === 0) {
-        navigate('/director/login')
-      }
       const res = await axios({
         method: "get",
-        url: "http://localhost:8000/api/president/",
+        url: "http://localhost:8000/api/admin/administrative",
         headers: {
-            "Accept": "application/json",
-            "Authorization": 'Bearer ' + accesToken
+          "Accept": "application/json",
         }
       })
-      setEmploye(res.data.Employe)
+      setEmploye(res.data.employe)
+      console.log(Employe);
     }
     affiche();
   }, []);
@@ -43,8 +37,6 @@ const EmpDirector = () => {
           <th className='space-header'></th>
           <th className='bordred-head'>Interet</th>
           <th className='space-header'></th>
-          <th className='bordred-head'>Type de classe</th>
-          <th className='space-header'></th>
         </tr>
         {
           Employe.map((e) => {
@@ -62,8 +54,6 @@ const EmpDirector = () => {
                 <td></td>
                 <td>{e.interet}</td>
                 <td></td>
-                <td>{e.type}</td>
-                <td></td>
               </tr>
             )
           })
@@ -73,4 +63,4 @@ const EmpDirector = () => {
   )
 }
 
-export default EmpDirector
+export default Administrative

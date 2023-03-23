@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { RiAdminFill, RiFolderAddFill } from 'react-icons/ri'
 import { IoIosArchive } from 'react-icons/io'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import Show from '../../components/Itemes/Show'
 import { HiUserAdd } from 'react-icons/hi'
 
 const DirectorLayout = () => {
+
     return (
 
         <div className='container'>
@@ -21,7 +22,7 @@ const DirectorLayout = () => {
                     </div>
                 </div>
                 <div className='right-side'>
-                    <Show person={"president"} />
+                    <Show person={"director"} />
                 </div>
             </nav>
 

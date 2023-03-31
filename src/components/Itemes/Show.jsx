@@ -11,21 +11,44 @@ const Show = ({ person }) => {
 
     const navigate = useNavigate()
     const navigation = () => {
+        //----------------------------------------
         if (person === 'employe') {
             navigate('/employe')
-        } else if (person === 'siperadmin') {
+        }
+
+        //----------------------------------------
+
+        else if (person === 'siperadmin') {
             navigate('/superadmin')
         }
+
+        //----------------------------------------
+
         else if (person === 'president') {
             navigate('/president')
         }
+
+        //----------------------------------------
+
         else if (person === 'director') {
             navigate('/director')
         }
+
+        //----------------------------------------
+
+        else if (person === 'administrative') {
+            navigate('/administrative')
+        }
+
+        //----------------------------------------
+
         else {
-            navigate('/')
+            navigate('/404');
         }
     }
+
+    //############################### Function logout ################################//
+
     const logout = () => {
         if (person === "employe") {
             const accesToken = localStorage.getItem("accessToken_emp");
@@ -44,6 +67,9 @@ const Show = ({ person }) => {
             localStorage.removeItem("accessToken_emp");
             navigate('/employe/login')
         }
+
+        //----------------------------------------
+
         else if (person === "superadmin") {
             const accesToken = localStorage.getItem("accessToken");
             if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
@@ -61,8 +87,11 @@ const Show = ({ person }) => {
             localStorage.removeItem("accessToken");
             navigate('/superadmin/login')
 
-        } else if (person === "president") {
+        }
 
+        //----------------------------------------
+
+        else if (person === "president") {
             const accesToken = localStorage.getItem("accessToken_pre");
             if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
                 navigate('/president/login')
@@ -78,7 +107,11 @@ const Show = ({ person }) => {
 
             localStorage.removeItem("accessToken_pre");
             navigate('/president/login')
-        } else if (person === "director") {
+        }
+
+        //----------------------------------------
+
+        else if (person === "director") {
 
             const accesToken = localStorage.getItem("accessToken_dir");
             if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
@@ -96,8 +129,29 @@ const Show = ({ person }) => {
             localStorage.removeItem("accessToken_dir");
             navigate('/director/login')
         }
+        
+        //----------------------------------------
+        
+        else if (person === "administrative") {
+
+            const accesToken = localStorage.getItem("accessToken_administrative");
+            if (accesToken == "undefined" || accesToken === null || accesToken === 0) {
+                navigate('/administrative/login')
+            }
+            axios({
+                method: 'delete',
+                url: 'http://localhost:8000/api/admin/administrative/logout',
+                headers: {
+                    "Accept": "application/json",
+                    "Authorization": 'Bearer ' + accesToken
+                }
+            })
+
+            localStorage.removeItem("accessToken_administrative");
+            navigate('/administrative/login')
+        }
         else {
-            console.log("error");
+            console.log("error of a guard you use in component show.jsx !!");
         }
     }
 

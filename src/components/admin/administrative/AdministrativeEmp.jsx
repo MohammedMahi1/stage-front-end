@@ -1,16 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
-const Administrative = () => {
+const AdministrativeEmp = () => {
   const [Employe, setEmploye] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const affiche = async () => {
+      const accesToken = localStorage.getItem("accessToken_administrative");
+      if (accesToken === "undefined" || accesToken === null || accesToken === 0 || accesToken === false) {
+          navigate('/administrative/login')
+      }
       const res = await axios({
         method: "get",
         url: "http://localhost:8000/api/admin/administrative",
         headers: {
           "Accept": "application/json",
+          "Authorization": 'Bearer ' + accesToken
         }
       })
       setEmploye(res.data.employe)
@@ -63,4 +70,4 @@ const Administrative = () => {
   )
 }
 
-export default Administrative
+export default AdministrativeEmp

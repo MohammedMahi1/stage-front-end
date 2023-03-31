@@ -23,7 +23,7 @@ const AddAdmin = () => {
         
         const accesToken = localStorage.getItem("accessToken");
         console.log(accesToken);
-        if (accesToken === undefined || accesToken === null || accesToken === 0 || accesToken === false) {
+        if (accesToken === "undefined" || accesToken === null || accesToken === 0 || accesToken === false) {
             navigate('/superadmin/login')
         }
         if(type === 'Administrative'){

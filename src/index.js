@@ -51,8 +51,15 @@ import EmpDirector from './components/director/employe/EmpPresident';
 import PresidentLogin from './page/President/Auth/PresidentLogin';
 import DirectorLogin from './page/Diretor/Auth/DirectorLogin';
 import DirectorIndex from './page/Diretor/DirectorIndex';
-import AdminLayout from './page/Admin/AdminLayout';
-import Administrative from './components/admin/Administrative';
+import AdministrativeLayout from './page/Admin/Administrative/AdministrativeLayout';
+import AdministrativeEmp from './components/admin/administrative/AdministrativeEmp';
+import AdministrativeArr from './components/admin/administrative/AdministrativeArr';
+import AdminiLogin from './page/Admin/Administrative/Auth/AdminiLogin';
+import AdministrativeIndex from './page/Admin/Administrative/AdministrativeIndex';
+import AdministrativeDep from './components/admin/administrative/AdministrativeDep';
+import FinenLogin from './page/Admin/Finenciere/Auth/FinenLogin';
+import FinenciereLayout from './page/Admin/Finenciere/FinenciereLayout';
+import FinenciereIndex from './page/Admin/Finenciere/FinenciereIndex';
 
 
 const router = createBrowserRouter(
@@ -117,11 +124,24 @@ const router = createBrowserRouter(
             { element: <EmployeEdit />, path: '/superadmin/employe/:id' },
           ]
         },
-        // --------------------- Admins Routes --------------------------//
+        // --------------------- Admine Administrative Routes --------------------------//
         {
-          element: <AdminLayout/>, path: '/admin',
+          element: <AdministrativeLayout/>, path: '/administrative',
           children: [
-            {element: <Administrative/>, path: '/admin/administrative'}
+            {element: <AdministrativeIndex/>, path: '/administrative/'},
+            {element: <AdministrativeEmp/>, path: '/administrative/employes'},
+            {element: <AdministrativeArr/>, path: '/administrative/arriver'},
+            {element: <AdministrativeDep/>, path: '/administrative/depart'},
+          ]
+        },
+        // --------------------- Admine Finenciere Routes --------------------------//
+        {
+          element: <FinenciereLayout/>, path: '/finenciere',
+          children: [
+            {element: <FinenciereIndex/>, path: '/finenciere/'},
+            // {element: <FinenciereEmp/>, path: '/finenciere/employes'},
+            // {element: <FinenciereArr/>, path: '/finenciere/arriver'},
+            // {element: <FinenciereDep/>, path: '/finenciere/depart'},
           ]
         },
         // --------------------- Employe Routes --------------------------//
@@ -144,6 +164,8 @@ const router = createBrowserRouter(
         { element: <DirectorLogin />, path: "/director/login", index: true },
         { element: <SupAdminLogin />, path: "/superadmin/login", index: true },
         { element: <EmployeLogin />, path: "/employe/login", index: true },
+        { element: <AdminiLogin />, path: "/administrative/login", index: true },
+        { element: <FinenLogin />, path: "/finenciere/login", index: true },
       ]
     }
 

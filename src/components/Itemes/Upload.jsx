@@ -25,7 +25,7 @@ const Upload = ({ person }) => {
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const navigate = useNavigate();
-
+//############################### Function useEffect for show picture profile of user ################################//
   useEffect(() => {
     if (person === "employe") {
       const accesToken = localStorage.getItem("accessToken_emp");
@@ -46,7 +46,7 @@ const Upload = ({ person }) => {
       affiche();
     }
 
-    // -------------------------------------------------------
+    // ===============================================================
 
     else if (person === 'superadmin') {
 
@@ -69,7 +69,7 @@ const Upload = ({ person }) => {
       affiche();
     }
 
-    // -------------------------------------------------------
+    // ===============================================================
 
     else if (person === 'president') {
 
@@ -91,6 +91,9 @@ const Upload = ({ person }) => {
       }
       affiche();
     }
+
+    // ===============================================================
+
     else if (person === 'director') {
 
       const accesToken = localStorage.getItem("accessToken_dir");
@@ -111,9 +114,57 @@ const Upload = ({ person }) => {
       }
       affiche();
     }
+    
+    // ===============================================================
+
+    else if (person === 'administrative') {
+
+      const accesToken = localStorage.getItem("accessToken_administrative");
+      if (accesToken === "undefined" || accesToken === null || accesToken === 0) {
+        navigate('/administrative/login')
+      }
+      const affiche = async () => {
+        const res = await axios({
+          method: "get",
+          url: "http://localhost:8000/api/admin/administrative/",
+          headers: {
+            "Accept": "application/json",
+            "Authorization": 'Bearer ' + accesToken
+          }
+        })
+        setImageUrl(res.data.datas.image_url)
+        console.log(res.data.datas);
+      }
+      affiche();
+    }
+    
+    else if (person === 'finenciere') {
+
+      const accesToken = localStorage.getItem("accessToken_finenciere");
+      if (accesToken === "undefined" || accesToken === null || accesToken === 0) {
+        navigate('/finenciere/login')
+      }
+      const affiche = async () => {
+        const res = await axios({
+          method: "get",
+          url: "http://localhost:8000/api/admin/finenciere/",
+          headers: {
+            "Accept": "application/json",
+            "Authorization": 'Bearer ' + accesToken
+          }
+        })
+        setImageUrl(res.data.datas.image_url)
+        console.log(res.data.datas);
+      }
+      affiche();
+    }
   }, []);
+//###################################################################################################################//
+
+//####################################### Function for add picture profile ##########################################//
 
   const addProfileImage = async (e) => {
+  
     if (person === 'superadmin') {
       e.preventDefault();
 
@@ -137,7 +188,7 @@ const Upload = ({ person }) => {
       })
     }
 
-    // -------------------------------------------------------
+    // ===============================================================
 
     else if (person === 'employe') {
       e.preventDefault();
@@ -161,8 +212,8 @@ const Upload = ({ person }) => {
         window.location.reload(false);
       })
     }
-
-    // -------------------------------------------------------
+    
+    // ===============================================================
 
     else if (person === 'president') {
       e.preventDefault();
@@ -187,6 +238,8 @@ const Upload = ({ person }) => {
       })
     }
     
+    // ===============================================================
+
     else if (person === 'director') {
       e.preventDefault();
 
@@ -210,11 +263,37 @@ const Upload = ({ person }) => {
       })
     }
     
-    
+    // ===============================================================
+
+    else if (person === 'administrative') {
+      e.preventDefault();
+
+      const formData = new FormData();
+
+      formData.append('image_profile', image);
+
+      const accesToken = localStorage.getItem("accessToken_administrative");
+
+      await axios({
+        method: "post",
+        url: "http://localhost:8000/api/admin/administrative/addImageProfile",
+        data: formData,
+        headers: {
+          "Accept": "application/json",
+          "Authorization": 'Bearer ' + accesToken
+        }
+      }).then(({ data }) => {
+        console.log(data.message);
+        window.location.reload(false);
+      })
+    }
+
     else {
       console.log('error');
     }
   }
+//###################################################################################################################//
+  
   const handlechange = (e) => {
     setImage(e.target.files[0])
   }
